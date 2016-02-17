@@ -1,0 +1,18 @@
+
+.info-ctn{
+	position: relative;
+	cursor: pointer;
+}
+.slide-info{
+	position: relative;
+	overflow: hidden;
+}
+.card-body{
+	position: relative;
+   
+    z-index: -1;
+    -webkit-transition: margin-top 0.4s ease-out;
+    -o-transition: margin-top 0.4s ease-out;
+    transition: margin-top 0.4s ease-out;
+}
+

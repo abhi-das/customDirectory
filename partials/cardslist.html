@@ -1,0 +1,21 @@
+
+	<div class="col-md-8">
+		<p>Card list here...</p>
+
+		<p class="alert alert-info" ng-show="loading">Loading JSON Data...</p>
+		<p class="alert alert-danger" ng-show="loading">Loading Failed JSON Data.</p>
+		<p class="alert alert-success" ng-show="loadingDone">Loading Completed JSON Data!</p>
+
+		<a href="#/card-details/dell-venue">Dell Venue</a>
+
+		<h2>Custom Directive</h2>
+
+		<!-- Custom Directives -->
+		<card-info-slide showdata=slidedata1></card-info-slide>	
+		<hr>
+		<card-info-slide showdata=slidedata2></card-info-slide>	
+
+	</div>
+	<div class="col-md-4">
+		<login-form></login-form>
+	</div>

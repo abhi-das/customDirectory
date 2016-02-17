@@ -1,0 +1,15 @@
+<form name="loginForm" class="form" novalidate>
+	
+	<fieldset class="form-group">
+		<label for="uName">User Name:</label>
+		<input type="text" id="uName" class="form-control" name="uName" placeholder="Name" ng-model="uName" required>
+		<p ng-show="loginForm.uName.$invalid && loginForm.uName.$touched">Name is required.</p>
+	</fieldset>
+
+	<fieldset class="form-group">
+		<label for="upassword">Password:</label>
+		<input type="text" id="upassword" class="form-control" name="upassword" placeholder="Password" ng-model="upassword" required>
+		<p ng-show="loginForm.upassword.$invalid && loginForm.upassword.$touched">Password is required.</p>
+	</fieldset>
+
+</form>
