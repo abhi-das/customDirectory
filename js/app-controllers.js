@@ -102,3 +102,20 @@ appCtrl.controller("MainContoller",["$scope", function($scope){
 	});
 
 }]);
+
+appCtrl.controller("CheckoutForm", ["$scope", function($scope){
+
+
+	// console.log("checkout form init...")
+	$scope.user = {};
+	$scope.validForm = false;
+	$scope.checkoutFormStepOne = function(){
+
+		if( $scope.checkoutstp1.$valid ){
+			$scope.validForm = true;
+			$scope.queryFormatFormData = $.param($scope.user);
+			
+		}
+	};
+
+}])

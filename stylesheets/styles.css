@@ -16,3 +16,46 @@
     transition: margin-top 0.4s ease-out;
 }
 
+
+
+/* Form error field animation styles - Start */
+
+#eMail, 
+#uName,
+#country,
+#gender{
+	position: relative;
+	z-index: 5;
+}
+
+.error-uName.ng-hide-add.ng-hide-add-active,
+.error-uName.ng-hide-remove.ng-hide-remove-active,
+.error-eMail.ng-hide-add.ng-hide-add-active,
+.error-eMail.ng-hide-remove.ng-hide-remove-active,
+.error-country.ng-hide-add.ng-hide-add-active,
+.error-country.ng-hide-remove.ng-hide-remove-active,
+.error-gender.ng-hide-add.ng-hide-add-active,
+.error-gender.ng-hide-remove.ng-hide-remove-active{
+	-webkit-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+
+.error-eMail,
+.error-uName,
+.error-country,
+.error-gender{
+	opacity: 1;
+	margin-top: 5px;
+	position: relative;
+	z-index: 0;
+}
+
+.error-uName.ng-hide,
+.error-country.ng-hide,
+.error-gender.ng-hide,
+.error-eMail.ng-hide{
+	opacity: 0;	
+	margin-top: -35px; 
+}
+/* End */
