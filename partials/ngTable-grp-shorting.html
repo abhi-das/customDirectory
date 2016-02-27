@@ -1,0 +1,114 @@
+<!-- Grouping with Shorting ngTable -->
+<!-- 
+<div ng-app="myApp" class="container-fluid">
+  
+  <div class="row">
+    <div class="col-md-6" >
+      <h3>ngTable directive</h3>
+      <table ng-table="tableParams" class="table table-condensed table-bordered table-hover">
+        <colgroup>
+          <col width="60%" />
+          <col width="20%" />
+          <col width="20%" />
+        </colgroup>
+        <tr class="ng-table-group" ng-repeat-start="group in $groups">
+          <td colspan="3">
+            <a href="" ng-click="group.$hideRows = !group.$hideRows">
+              <span class="fa" ng-class="{ 'fa-chevron-right': group.$hideRows, 'fa-chevron-down': !group.$hideRows }"></span>
+              <strong>{{ group.value }}</strong>
+            </a>
+          </td>
+        </tr>
+        <tr ng-hide="group.$hideRows" ng-repeat="user in group.data" ng-repeat-end>
+
+			<td sortable="'country'" data-title="'Country'" groupable="'country'" ng-if="false">
+				{{user.country}}
+			</td>
+			<td sortable="'name'" data-title="'Name'" groupable="'name'">
+				{{user.name}}
+			</td>
+			<td sortable="'age'" data-title="'Age'" groupable="'age'">
+				{{user.age}}
+			</td>
+			<td sortable="'money'" data-title="'Money'">
+				{{user.money}}
+			</td>
+			<td sortable="'role'" data-title="'Role'" groupable="'role'" ng-if="false">
+				{{user.role}}
+			</td>
+			<td sortable="name" data-title="'Name'" groupable="'name'" >
+			  {{user.name}}
+			</td>
+			
+			<td sortable="age" data-title="'Age'" groupable="'age'" >
+			  {{user.age}}
+			</td>
+
+        </tr>
+      </table>
+    </div>
+    
+  </div>
+</div> -->
+
+<div style="margin: 25px;">
+
+	<label class="checkbox-inline">
+	  <input type="checkbox"  ng-model="show1" ng-model-options="{ getterSetter: true }"/> Installation At
+	</label>
+	<label class="checkbox-inline">
+	  <input type="checkbox" ng-model="show2" ng-model-options="{ getterSetter: true }"/> Admin Email
+	</label>
+	<label class="checkbox-inline">
+	  <input type="checkbox" ng-model="show3" ng-model-options="{ getterSetter: true }"/> Powered By
+	</label>
+	<label class="checkbox-inline">
+	  <input type="checkbox" ng-model="show4" ng-model-options="{ getterSetter: true }"/> Powered By Icon
+	</label>
+	<label class="checkbox-inline">
+	  <input type="checkbox" ng-model="selectRowAuto" ng-model-options="{ getterSetter: true }" ng-change="selectAll()"/> Select All
+	</label>
+</div>
+
+<div  style="margin: 25px;">
+	<label for="keysFilter">Filter Keys:</label>
+    <input id="keysFilter" class="form-control" type="text" ng-model="keysFilter" placeholder="Installation At -OR- Admin Email -OR- Powered By"/>
+</div>
+<div ng-show="flag">I'm ON when band choosed</div>
+<div  style="margin: 25px;">
+	<button class="btn btn-danger btn-sm" ng-click="deleteRows()"><span class="fa fa-trash"></span>  Delete</button>
+</div>
+<!-- <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped" > -->
+<table ng-table="tableParams" class="table table-bordered table-striped"  ng-table-columns-binding="$data">
+		
+	<tr ng-repeat="row in $data">
+		<td title="'Installation At'"  ng-if="show1" filter="{installationAt: 'text'}" sortable="'installationAt'">{{row.installationAt}}</td>
+		<td title="'Admin Email'"  ng-if="show2" filter="{adminEmail: 'text'}" sortable="'adminEmail'">{{row.adminEmail}}</td>
+		<td title="'Powered By'"  ng-if="show3" filter="{poweredBy: 'text'}" sortable="'poweredBy'">{{row.poweredBy}}</td>
+		<td title="'Powered By Icon'"  ng-if="show4" filter="{poweredByIcon: 'text'}" sortable="'poweredByIcon'">{{row.poweredByIcon}}</td>
+		<td title="'Select'">
+
+<label class="checkbox-inline">
+	<input class="autoSelectRow" type="checkbox"  ng-model="row.Selected" ng-click="collectRows(row)" />
+</label>
+
+		</td>
+	</tr>
+	
+</table>
+
+
+<table ng-table="buildStatusTable" class="table table-bordered table-striped"  ng-table-columns-binding="$data">
+  
+	<tr ng-repeat="queryInfo in $data">
+        <td data-title="'Key'" sortable="'key'">{{queryInfo.key}}</td>
+        <td data-title="'Last Run'" sortable="'lastRun'">{{queryInfo.lastRun}}</td>
+        <td data-title="'Elapsed Time'" sortable="'elapsedTime'">{{queryInfo.elapsedTime}} ms</td>
+        <td data-title="'Rows'" sortable="'rows'">{{queryInfo.rows}}</td>
+        <td data-title="'Failed'" sortable="'failed'">{{queryInfo.failed}}</td>
+
+        
+    </tr>
+
+
+</table>

@@ -10,6 +10,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
     <link rel="stylesheet"type="text/css" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/0.8.3/ng-table.css" />
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,21 +34,42 @@
       <div class="inner clearfix">
         <section id="main-content" ng-controller="MainContoller">
           
-            <h1>Credit Cards...</h1>
+            <nav class="navbar navbar-default">
+              <ul class="nav navbar-nav">
+                <li><a href="#/cards">Cards</a></li>
+                <li><a href="#/user-form">User Form</a></li>
+                <li><a href="#/book-info">D3 JS</a></li>
+                <li><a href="#/grid-table">NG Table Grouping</a></li>
+                <li><a href="#/grp-shorting">NG Table</a></li>
+              </ul>
+            </nav>
+
+            
+            
             <div ng-view></div>
           
 
-          <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular.min.js"></script>
+          <!--<script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular.min.js"></script>
           <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular-route.min.js"></script>
           <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular-animate.min.js"></script>
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.min.js"></script>
           <script src="https://cdn.jsdelivr.net/jquery/3.0.0-beta1/jquery.js"></script> 
-
-          <!--<script src="../js/lib/ng/angular.min.js"></script>
+          -->
+          <script src="../js/lib/ng/angular.min.js"></script>
           <script src="../js/lib/ng/angular-route.min.js"></script>
           <script src="../js/lib/ng/angular-resource.min.js"></script>
           <script src="../js/lib/ng/angular-animate.min.js"></script>
-          <script src="../js/lib/jquery-1.10.1.min.js"></script>-->
+          <script src="../js/lib/jquery-1.10.1.min.js"></script>
+          <script src="../js/lib/lodash.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/0.8.3/ng-table.js"></script>
+
+
+
+          <!--<script src="../js/lib/ng/table-lib/ngTableParams.js"></script> -->
+
+          
+          
+          <script src="../js/d3.v3.min.js"></script>
           <script src="js/app.js"></script>
           <script src="js/app-controllers.js"></script>
           <script src="js/app-services.js"></script>

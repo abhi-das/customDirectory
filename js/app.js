@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("CardsApp", ["ngRoute","ngResource","ngAnimate","AppCtrls","AppServices","AppDrvs"]);
+var app = angular.module("CardsApp", ["ngTable","ngRoute","ngResource","ngAnimate","AppCtrls","AppServices","AppDrvs"]);
 
 app.config(["$routeProvider", 
 	function($rProvider){
@@ -17,8 +17,20 @@ app.config(["$routeProvider",
 			templateUrl: "partials/checkoutstep1.html",
 			controller: "CheckoutForm"
 		})
+		.when("/book-info",{
+			templateUrl: "partials/bookinfo.html",
+			controller: "BookInfoCtrl"
+		})
+		.when("/grid-table",{
+			templateUrl: "partials/gridtable.html",
+			controller: "GridTableCtrl"
+		})
+		.when("/grp-shorting",{
+			templateUrl: "partials/ngTable-grp-shorting.html",
+			controller: "GrpShortCtrl"
+		})
 		.otherwise({
-			redirectTo: "/cards"
+			redirectTo: "/grp-shorting"
 		})
 
 	}
