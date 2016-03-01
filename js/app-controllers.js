@@ -269,7 +269,7 @@ appCtrl.filter("filterMatchingKeys", function() {
 	};
 });
 
-appCtrl.controller("GrpShortCtrl",["$scope", "NgTableParams", "$filter", function($scope, NgTableParams, $filter){
+appCtrl.controller("GrpShortCtrl",["$scope","$document", "NgTableParams", "$filter", function($scope,$document, NgTableParams, $filter){
 
 	var tableData = [
 		{
@@ -349,6 +349,42 @@ appCtrl.controller("GrpShortCtrl",["$scope", "NgTableParams", "$filter", functio
 			$scope.tableParams.reload();
 		});
 
+	$scope.checkboxes = {
+      checked: false,
+      items: {}
+    };
+
+ 	// watch for check all checkbox
+    $scope.$watch(function() {
+      return $scope.checkboxes.checked;
+    }, function(value) {
+      angular.forEach(tableData, function(item) {
+        $scope.checkboxes.items[item.id] = value;
+      });
+    });
+
+     // watch for data checkboxes
+    $scope.$watch(function() {
+      return $scope.checkboxes.items;
+    }, function(values) {
+      var checked = 0, unchecked = 0,
+          total = tableData.length;
+      angular.forEach(tableData, function(item) {
+        checked   +=  ($scope.checkboxes.items[item.id]) || 0;
+        unchecked += (!$scope.checkboxes.items[item.id]) || 0;
+      });
+      if ((unchecked == 0) || (checked == 0)) {
+        $scope.checkboxes.checked = (checked == total);
+      }
+      // grayed checkbox
+      //angular.element($element[0].getElementsByClassName("select-all")).prop("indeterminate", (checked != 0 && unchecked != 0));
+      angular.element($document[0].querySelector("#selectAll")).prop("indeterminate", (checked != 0 && unchecked != 0));
+      // console.log($document[0].querySelector("#selectAll"));
+    }, true);
+
+
+
+
 
 	$scope.selectedRow = [];
 	$scope.collectRows = function(row) {
@@ -359,15 +395,17 @@ appCtrl.controller("GrpShortCtrl",["$scope", "NgTableParams", "$filter", functio
 	    }else{
 			$scope.selectedRow.push(row);
 	    }
-		console.log( $scope.selectedRow );
-	}
+		// console.log( $scope.selectedRow );
+	};
 
-	$scope.deleteRows = function() {
+	$scope.deleteRows = function(rw) {
+
+		var delRow = $scope.selectedRow || rw;
 
 		//validate each row with selected row array and actual data source and remove from list
 		_.remove(tableData, function(item,i) {
-			return _.indexOf($scope.selectedRow, item) !== -1
-		});		
+			return _.indexOf(delRow, item) !== -1
+		});	
 
 		//after updating data source, reload/ refresh table data once.
 		$scope.tableParams.reload().then(function(data) {
@@ -377,8 +415,14 @@ appCtrl.controller("GrpShortCtrl",["$scope", "NgTableParams", "$filter", functio
 			}
 			//empty selectedRow array once table data source is updated with removed functionality
 			$scope.selectedRow = [];
+			$scope.selectRowAuto = false;
 		});
     };
+
+	
+    
+ 
+  
 
 	// Second ng Table
 	var buildStatus = [
@@ -437,30 +481,14 @@ appCtrl.controller("GrpShortCtrl",["$scope", "NgTableParams", "$filter", functio
 	// });
 
 	$scope.selectAll = function(){
+		$scope.selectedRow = [];
+		angular.forEach(tableData, function (row) {
+           $scope.selectedRow.push(row);
+	    });
+	 	// console.log(item)
+	};
 
-
-		// console.log($scope.selectRow);
-		 angular.forEach(tableData, function (row) {
-		 	// console.log(item)
-
-           	row.Selected = $scope.selectRowAuto;
-
-        });
-
-
-
-	}
-	$scope.$watch( "row.Selected" , function(n,o){
-	        var trues = $filter("filter")( n , {val:true} );
-	        console.log(trues)
-	        // $scope.flag = trues.length;
-	    }, true );
-	$scope.stateChanged = function (ids) {
-			// console.log($scope.selectRowAuto[1]);
-	//    if($scope.selectRowAuto[ids]){ //If it is checked
-	//        alert('test');
-	// }
-}
+	
 
 
 }])
