@@ -80,36 +80,29 @@
 </div>
 
 <script type="text/ng-template" id="headerCheckbox.html">
-    <input type="checkbox" ng-model="row.checkboxes.checked" class="select-all" id="selectAll" value="" />
+    <input type="checkbox" ng-model="checkboxes.checked" class="select-all" id="selectAll" value="" ng-click="selectAllRows()"/>
+</script>
+
+<script type="text/ng-template" id="headerDeleteIcon.html">
+    Inline Delete
 </script>
 
 <!-- <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped" > -->
 <table ng-table="tableParams" class="table table-bordered table-striped"  ng-table-columns-binding="$data">
-		<!-- <colgroup>
-          <col width="5%"/>
-          <col width="15%"/>
-          <col width="15%"/>
-          <col width="15%"/>
-          <col width="15%"/>
-          <col width="15%"/>
-          <col width="15%"/>
-        </colgroup> -->
+
 	<tr ng-repeat="row in $data">
-		<td header="'headerCheckbox.html'"><input type="checkbox" ng-model="row.checkboxes.items[row.id]" /></td>
-		
+		<td header="'headerCheckbox.html'"><input type="checkbox" ng-model="checkboxes.items[row.id]"/ ng-click="collectRows(row)"></td>
 		<td title="'Installation At'"  ng-if="show1" filter="{installationAt: 'text'}" sortable="'installationAt'">{{row.installationAt}}</td>
 		<td title="'Admin Email'"  ng-if="show2" filter="{adminEmail: 'text'}" sortable="'adminEmail'">{{row.adminEmail}}</td>
 		<td title="'Powered By'"  ng-if="show3" filter="{poweredBy: 'text'}" sortable="'poweredBy'">{{row.poweredBy}}</td>
 		<td title="'Powered By Icon'"  ng-if="show4" filter="{poweredByIcon: 'text'}" sortable="'poweredByIcon'">{{row.poweredByIcon}}</td>
-		<td title="'Select'">
-
+		<!--<td title="'Select'">
 <label class="checkbox-inline">
 	<input class="autoSelectRow" type="checkbox" ng-model="row.isSelected" ng-change="someAction()" ng-checked="selectRowAuto" ng-click="collectRows(row)" />
-</label>
+</label> 
+		</td>-->
 
-		</td>
-
-		 <td>
+		 <td header="'headerDeleteIcon.html'">
             <button class="btn btn-danger btn-sm" ng-click="deleteRows(row)" ng-if="!row.isEditing"><span class="fa fa-trash"></span></button>
           </td>
 	</tr>
