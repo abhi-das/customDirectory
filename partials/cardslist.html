@@ -1,12 +1,12 @@
 
 	<div class="col-md-8">
-		<p>Card list here...</p>
+		<p class="sub-title-cards">Card list here... UI STATE STYLESHEET!!</p>
 
 		<p class="alert alert-info" ng-show="loading">Loading JSON Data...</p>
 		<p class="alert alert-danger" ng-show="loading">Loading Failed JSON Data.</p>
 		<p class="alert alert-success" ng-show="loadingDone">Loading Completed JSON Data!</p>
 
-		<a href="#/card-details/dell-venue">Dell Venue</a>
+		<a ui-sref="card-details/dell-venue">Dell Venue</a>
 
 		<h2>Custom Directive</h2>
 
@@ -19,5 +19,5 @@
 	<div class="col-md-4">
 		<login-form></login-form>
 		<hr>
-		<a href="#/user-form">Angular Form Validation with Animated Error Messages.</a>
+		<a ui-sref="userForm">Angular Form Validation with Animated Error Messages.</a>
 	</div>

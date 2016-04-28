@@ -21,7 +21,7 @@
     <title>Customdirectory by abhi-das</title>
   </head>
 
-  <body>
+  <body ui-router-styles>
     <header>
       <div class="inner">
         <h1>Customdirectory</h1>
@@ -36,33 +36,34 @@
           
             <nav class="navbar navbar-default">
               <ul class="nav navbar-nav">
-                <li><a href="#/cards">Cards</a></li>
-                <li><a href="#/user-form">User Form</a></li>
-                <li><a href="#/book-info">D3 JS</a></li>
-                <li><a href="#/grid-table">NG Table Grouping</a></li>
-                <li><a href="#/grp-shorting">NG Table</a></li>
+                <li><a ui-sref="cards">Cards</a></li>
+                <li><a ui-sref="userForm">User Form</a></li>
+                <li><a ui-sref="bookInfo">D3 JS</a></li>
+                <li><a ui-sref="gridTable">NG Table Grouping</a></li>
+                <li><a ui-sref="grpShorting">NG Table</a></li>
               </ul>
             </nav>
 
             
             
-            <div ng-view></div>
+            <div ui-view></div>
           
 
-          <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular-route.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular-animate.min.js"></script>
-          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/jquery/3.0.0-beta1/jquery.js"></script> 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.js"></script>
+        <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/angularjs/1.4.7/angular-animate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery/3.0.0-beta1/jquery.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.js"></script>
           
-          <!-- <script src="../js/lib/ng/angular.min.js"></script>
-          <script src="../js/lib/ng/angular-route.min.js"></script>
+           <!--<script src="../js/lib/ng/angular.min.js"></script>
           <script src="../js/lib/ng/angular-resource.min.js"></script>
           <script src="../js/lib/ng/angular-animate.min.js"></script>
+          <script src="../js/lib/ng/angular-ui-router.min.js"></script>
+          
           <script src="../js/lib/jquery-1.10.1.min.js"></script>
-          <script src="../js/lib/lodash.js"></script>
-           -->
+          <script src="../js/lib/lodash.js"></script>-->
+           
           <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/0.8.3/ng-table.js"></script>
 
 
@@ -70,7 +71,7 @@
           <!--<script src="../js/lib/ng/table-lib/ngTableParams.js"></script> -->
 
           
-          
+          <script src="js/lib/angular-ui-router-styles.js"></script>
           <script src="../js/d3.v3.min.js"></script>
           <script src="js/app.js"></script>
           <script src="js/app-controllers.js"></script>

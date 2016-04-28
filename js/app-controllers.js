@@ -2,7 +2,7 @@
 
 var appCtrl = angular.module("AppCtrls",[]);
 
-appCtrl.controller("CardsList", ["$scope", "$log","CardServices", "$resource", function($scope, $log, cardServ, $resource){
+appCtrl.controller("CardsList", ["$scope", "$state", "$log","CardServices", "$resource", function($scope, $state, $log, cardServ, $resource){
 
 	// console.log("cards list init...");
 	//console.log(cardServ);
@@ -68,11 +68,11 @@ appCtrl.controller("CardsList", ["$scope", "$log","CardServices", "$resource", f
 
 }]);
 
-appCtrl.controller("CardDetail",["$scope","$routeParams","CardServices", function($scope, $routeParams, cardServ){
+appCtrl.controller("CardDetail",["$scope", "$state", "$stateParams" , "CardServices", function($scope, $state, $stateParams, cardServ){
 
-	var newPhone = cardServ.get({cardId:$routeParams.cardId}, function(dt){
+		console.log("in >> "+$stateParams.cardId);
+	var newPhone = cardServ.get({cardId:$stateParams.cardId}, function(dt){
 		
-		//console.log("in >> "+$routeParams.cardId);
 
 	}, function(err){
 		
@@ -269,7 +269,7 @@ appCtrl.filter("filterMatchingKeys", function() {
 	};
 });
 
-appCtrl.controller("GrpShortCtrl",["$scope","$document", "NgTableParams", "$filter", function($scope,$document, NgTableParams, $filter){
+appCtrl.controller("GrpShortCtrl",["$scope","$state", "$document", "NgTableParams", "$filter", function($scope,$state, $document, NgTableParams, $filter){
 
 	var tableData = [
 		{
